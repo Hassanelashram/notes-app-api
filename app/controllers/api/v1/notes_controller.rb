@@ -24,7 +24,7 @@ module Api
       end
 
       def update
-        note = Note.find(params[:id])
+        note = Note.find(params[:id].to_i)
         data = json_payload.select { |k| ALLOWED_DATA.include?(k) }
         if note.update
           render json: note
