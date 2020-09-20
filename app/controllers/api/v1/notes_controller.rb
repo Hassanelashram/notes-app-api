@@ -26,7 +26,7 @@ module Api
       def update
         note = Note.find(params[:id].to_i)
         data = json_payload.select { |k| ALLOWED_DATA.include?(k) }
-        if note.update
+        if note.update(data)
           render json: note
         else
           render json: { "error": 'Could not update it' }
